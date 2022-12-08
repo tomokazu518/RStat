@@ -1,0 +1,194 @@
+# RとRStudioのインストール
+
+## Rが使えるパソコン
+
+Rはオープン・ソースで開発されており，Windows，Mac，Linuxのいずれでも利用可能。Rそのものは性能の低いマシンでも十分に動作する(ただし，分析するデータの規模や用いる分析手法によってはある程度高性能なパソコンが必要になるかもしれない)。また，RStudioはRを便利に使うために必須と言えるソフトウェア。
+
+これからパソコンを用意するという人には，Mac \> Linux \> Windowsの順でおすすめする。(わたしが)Rを使っていてトラブルが少ないのはMac。LinuxもMacと共通の部分が多く安定しているが，一般の人にはあまり馴染みがないと思うので，R以外の用途を考えると選択肢からは外れそう。Windowsは最初に少し設定が必要なのと，フォルダやファイル名に注意して利用する必要がある。といっても，いま使っているPCがWindowsであれば，買い換えるほどのものでもない。
+
+Windowsの場合には，WSLという仮想環境のLinuxにRをインストールして使うことも可能。わたしは，WSLにRとRStudio Serverをインストールして，ChromeなどのブラウザでRStudioを使っている(快適)。
+
+## インストール方法
+
+インストールの方法については，[高知工科大学の矢内先生のホームページ](https://yukiyanai.github.io/jp/resources/)に，これ以上丁寧に説明することはできないというくらいに丁寧な解説スライドが公開されている。Ubuntu，Mac，Windows版があるので，これらを参考にインストールすると良い。ただし，うまくいかなくても矢内先生に直接質問のメールを送ったりはしないこと。
+
+### Mac
+
+矢内先生の資料通りに進めても良いが，とにかく速くインストールして使いたいということであれば，Homebrewを使うのが良い。
+
+- HomebrewはMacのパッケージマネージャ。ソフトのインストールやアップグレードの管理が容易にできるようになるので，おすすめ。
+  - RとRStudioもHomebrewを使えば簡単にインストールできる。
+  - Homebrewをインストールしていない人は，ターミナルで以下のコマンドを実行すればインストール可能(詳細は，[ここ](https://brew.sh/index_ja)を参照)。
+  - Command Line ToolsはHomebrewをインストールする際自動的にインストールされる。
+
+    ```{bash eval=F}
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+- Homebrewがインストールできたら，ターミナルで以下のコマンドを実行することでRとRStudio，ついでにXquartzをインストールできる。
+
+    ```{bash eval=F}
+    brew install --cask r rstudio xquartz
+    ```
+
+### Windows
+
+WindowsにRをインストールする際には，事前にいくつかの設定を行っておく必要がある。矢内先生の資料に丁寧にまとめられているので，それを見ながらインストールすると良い。以下補足。
+
+- プログラミング用フォントのインストールはとりあえず飛ばしてもかまわない。
+- RtoolsもとりあえずなくてもOk(パッケージをソースコードからビルドする場合に必要だが，ほとんどのパッケージはビルド済みのバイナリが提供されている)。
+- 全角文字(とくに全角スペース)が含まれるホーム・フォルダ名の問題は，Rに限らずさまざまなソフトで問題を引き起こすので，対処しておく必要がある。
+  - 最近ではMicrosoftアカウントでWindowsをセットアップすると，Microsoftアカウント(メールアドレス)の最初の5文字がホーム・フォルダ名になるはずなので，通常は問題ないはず。
+  - ホームフォルダ名に漢字などの全角文字が使われている場合は，いっそのことOSを初期化してMicrosoftアカウントを使って再セットアップした方がいいかもしれない(ユーザー名だけを変更しても，ホームフォルダ名は変わらない)。
+  - 初期化したくない場合には，矢内先生の資料の対処法その3(シンボリックリンク作成)が良いと思う。
+- One Drive問題にも対処が必要。
+  - Rはパッケージをドキュメント・フォルダにインストールする。ドキュメント・フォルダがOneDriveに管理されていると，フォルダ名に全角文字(カタカナで"ドキュメント")が含まれるためパッケージを読み込むことができなくなる。
+  - Office 365のOneDriveを使っている場合には，矢内先生の資料の対処法その3で，パッケージをインストールするフォルダとして別の場所を指定するのが良い。
+
+### WSL (Windows Subsystem for Linux)
+
+#### WSLとは
+
+Linuxには便利なツール(コマンド)があって，その多くはWindowsでも使えるが，実行速度や安定性ではLinuxに軍配が上がる。RもWindowsよりもLinuxの方が速いらしい。
+
+WSLはWindows上で動作するLinuxの仮想環境。Windowsマシン上でもう1台LinuxのPCを動かすようなイメージ。メインマシンをLinuxにしようってほど尖ってはいないが，Linuxのツールを使いたいという場合に便利。
+
+#### WSL2のインストール
+
+- BIOSで仮想化支援機能を有効にする
+  - 有効になっているかどうかは[VirtualChecker](https://openlibsys.org/index-ja.html)で確認できる(最初から有効になっている場合もある)
+  - BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目
+- Windows 10 バージョン 2004 以降では，PowerShellで以下のように入力すればインストールできる(仮想化支援機能の有効化は必要)。デフォルトでUbuntuもインストールされるので，これだけですぐに使えるようになる。
+
+```powershell
+wsl --install
+```
+
+#### 初期設定
+
+スタートメニューなどにUbuntuのショートカットが追加されているので起動する。初回起動時は，設定が行われるため数分かかる。 起動すると新規ユーザー名とパスワードを聞かれるので適当に設定すれば良い(パスワードは入力しても表示されないので注意)。パスワードはWindowsよりも頻繁に入力を求められるので入力しやすいものにしておいた方が良い。
+
+- 起動したら，まず以下のコマンドでパッケージのアップデートを行っておく。
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+- WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに"&#x00A5;&#x00A5;wsl$"と入力
+- WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを使うには，wslコマンド，もしくはubuntu runコマンドを使う
+
+```bash
+wsl ls -l
+ubuntu run ls -l
+```
+
+#### RStudio Serverとは
+
+WSL上のLinuxにRStudioをインストールすれば普通にLinuxデスクトップ版RStudioを使うことができるようになるが，ここではRStudio Serverを使う方法を説明する。RStudio Serverは，RStudioをブラウザで使うことができる自前のRStudio Cloud。インターフェイスや操作性はデスクトップ版RStudioとほぼ変わらない。
+
+RStudio Serverのメリットは，インストールしたマシン以外からもブラウザで簡単にアクセスして使える点。サーバー1台にインストールしておけば，どのマシンからアクセスしても同じRの環境で分析ができるし，中断した作業を別のマシンでシームレスに再開することも可能。一応，iPadやスマホでも使うことができる。
+
+#### R本体およびRStudio Serverのインストール
+
+基本的には，[ここ](https://support.rstudio.com/hc/en-us/articles/360049776974-Using-RStudio-Server-in-Windows-WSL2)で解説されている通りにやればできる。
+
+- まず，証明書とレポジトリを追加
+
+```bash
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
+```
+
+- RおよびRStudio Serverを使うために必要なパッケージをインストール
+
+```bash
+sudo apt install -y r-base r-base-core r-recommended r-base-dev gdebi-core build-essential libcurl4-gnutls-dev libxml2-dev libssl-dev
+```
+
+- Ubuntu用のRStudio Serverをダウンロード
+
+```bash
+wget https://rstudio.org/download/latest/stable/server/bionic/rstudio-server-latest-amd64.deb
+```
+
+- RStudio Serverのインストール("Couldn’t find an alternative telinit implementation to spawn."というメッセージが出るが，無視してよいとのこと)
+
+```bash
+sudo gdebi rstudio-server-latest-amd64.deb
+```
+
+- RStudio Serverを起動
+
+```bash
+sudo rstudio-server start
+```
+
+- [http://localhost:8787](http://localhost:8787)にアクセスしてRStudio Serverが動いていることを確認
+- ユーザー名とパスワードは，Ubuntuに設定したもの
+- LAN内のほかのPCやインターネット経由でもアクセスできるようにすれば便利(ただし，このまま外部からアクセスできるようにするのは危険)
+
+## RStudioの画面
+
+RStudioを起動すると，細かい違いはあれ下のような画面が表示されるはず。
+
+![RStudio](RStudio.png)
+
+デフォルトでは白背景の配色になっていると思うが，コードを書くときは黒や青背景の方が見やすいので変更している。見た目を変更するには，RStudioのメニューから[Tools]\>[Global Options...]を選び，Appearanceで設定する。長時間の作業を行う場合には，色やフォントによって作業効率や目の疲れ方がけっこう変わってくるので，いろいろ試して自分にあった設定にしよう。
+
+RStudioの画面は，デフォルトで4ペイン(4分割)。最初はそのまま使っても良いと思うが，画面のレイアウトは比較的自由に変えることができるので，慣れてきたら自分が使いやすいように設定しよう。
+
+各ペインにはタブが複数配置されている。まずは，よく使うものだけ説明する。
+
+- Sourceペイン：デフォルトでは左上。何もファイルが開かれていない状態では最小化されているので，画面左上の+マークで新しいスクリプト・ファイル(R Script)を作成してみよう。
+- Consoleペイン：デフォルトでは左下。Rにコマンドを入力して実行する画面。
+- Environmentなどのペイン：デフォルトでは右上。Environmentタブには記憶されている変数やデータなどが表示される。Historyタブには実行したコマンドの履歴が表示され，選択して再度実行できる。
+- Filesなどのペイン：デフォルトでは右下。Filesタブには現在のディレクトリにあるファイルのリストが表示される。ファイル名をクリックすればファイルを開くことができる。RのソースコードなどやデータフレームはSourceペインで開かれる。Plotsタブはグラフが表示される場所。
+
+Rで単発のコマンドを実行するときには，Consoleタブで行う。ただし，通常はスクリプト・ファイルにコマンドを書いて一つずつ実行していったり，いくつかのコマンドをまとめて実行したりすることが多い。Consoleでコマンドを実行した場合にも，Histroyタブからスクリプト・ファイルへと実行したコマンドを貼り付けておくと良い。そうすれば，いつでも作業を最初から再現できる。研究では，結果を再現できることが極めて重要。再現性を担保できることは，ExcelではなくRを使うメリットの一つ。
+
+スクリプト・ファイルに書かれたコマンドを実行する場合，Ctrlを押しながらEnterを押す。範囲が選択されていない場合には，カーソルのある行(コマンドが複数行にまたがっていてもOk)が実行される。範囲を選択してCtrl+Enterを押せば，選択された範囲のコードが順に実行される。
+
+## ヘルプの参照
+
+Rのコマンド・ヘルプは?のあとにコマンド名を入力すれば参照できる。ヘルプは，Helpタブ(デフォルトでは右下のペイン)に表示される。知らないコマンドが出てきたらまずはヘルプを読む。英語が苦手でもDeepLで翻訳すればだいたい読める。
+
+たとえば，table関数のヘルプを読みたければ，
+
+``` r
+?table
+```
+
+## チュートリアルの実行
+
+右上のペインにTutorialというタブがあり，そこからRのチュートリアル・レッスンを受けられる。チュートリアルを実行するためのパッケージをインストールするのに時間がかかるが，とりあえず一通り実行してみると，Rの使い方についてのイメージを持つことができるかもしれない。
+
+## パッケージのインストール
+
+Rは本体にパッケージを追加することで，機能を拡張することができる。パッケージをインストールするには，install.packages関数を用いる。とくに，tidyverseパッケージは必ず利用することになるので，インストールしておこう。
+
+```{r eval=F}
+install.packages("tidyverse")
+```
+
+MacやUbuntuの場合，もしかしたら"openssl"がないみたいなエラーが出るかもしれない。そのときは，opensslをインストールしてから，再度実行する。
+
+opensslはMac(Homebrew)だと，
+
+```{bash eval=F}
+brew install openssl
+```
+
+Ubuntuだと，
+
+```{bash eval=F}
+sudo apt install openssl
+```
+
+でインストールできる。
+
+インストールしたパッケージは毎回読み込む必要がある。パッケージを読み込むにはlibrary関数を使う。
+
+```{r eval=F}
+library(tidyverse)
+```

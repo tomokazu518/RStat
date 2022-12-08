@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 母親の喫煙と新生児の出生時体重 | ちょっとニッチなR入門1</title>
+  <meta name="description" content="Chapter 6 母親の喫煙と新生児の出生時体重 | ちょっとニッチなR入門1" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 母親の喫煙と新生児の出生時体重 | ちょっとニッチなR入門1" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 母親の喫煙と新生児の出生時体重 | ちょっとニッチなR入門1" />
+  
+  
+  
+
+<meta name="author" content="Tomokazu NOMURA" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="データの要約2グラフの作成.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ちょっとニッチなR入門</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに</a></li>
+<li class="chapter" data-level="2" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html"><i class="fa fa-check"></i><b>2</b> RとRStudioのインストール</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#rが使えるパソコン"><i class="fa fa-check"></i><b>2.1</b> Rが使えるパソコン</a></li>
+<li class="chapter" data-level="2.2" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#インストール方法"><i class="fa fa-check"></i><b>2.2</b> インストール方法</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#mac"><i class="fa fa-check"></i><b>2.2.1</b> Mac</a></li>
+<li class="chapter" data-level="2.2.2" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#windows"><i class="fa fa-check"></i><b>2.2.2</b> Windows</a></li>
+<li class="chapter" data-level="2.2.3" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#wsl-windows-subsystem-for-linux"><i class="fa fa-check"></i><b>2.2.3</b> WSL (Windows Subsystem for Linux)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#rstudioの画面"><i class="fa fa-check"></i><b>2.3</b> RStudioの画面</a></li>
+<li class="chapter" data-level="2.4" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#ヘルプの参照"><i class="fa fa-check"></i><b>2.4</b> ヘルプの参照</a></li>
+<li class="chapter" data-level="2.5" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#チュートリアルの実行"><i class="fa fa-check"></i><b>2.5</b> チュートリアルの実行</a></li>
+<li class="chapter" data-level="2.6" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#パッケージのインストール"><i class="fa fa-check"></i><b>2.6</b> パッケージのインストール</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rにおけるオブジェクト.html"><a href="rにおけるオブジェクト.html"><i class="fa fa-check"></i><b>3</b> Rにおけるオブジェクト</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="rにおけるオブジェクト.html"><a href="rにおけるオブジェクト.html#数値と文字列"><i class="fa fa-check"></i><b>3.1</b> 数値と文字列</a></li>
+<li class="chapter" data-level="3.2" data-path="rにおけるオブジェクト.html"><a href="rにおけるオブジェクト.html#ベクトル"><i class="fa fa-check"></i><b>3.2</b> ベクトル</a></li>
+<li class="chapter" data-level="3.3" data-path="rにおけるオブジェクト.html"><a href="rにおけるオブジェクト.html#ファクター"><i class="fa fa-check"></i><b>3.3</b> ファクター</a></li>
+<li class="chapter" data-level="3.4" data-path="rにおけるオブジェクト.html"><a href="rにおけるオブジェクト.html#データフレーム"><i class="fa fa-check"></i><b>3.4</b> データフレーム</a></li>
+<li class="chapter" data-level="3.5" data-path="rにおけるオブジェクト.html"><a href="rにおけるオブジェクト.html#関数"><i class="fa fa-check"></i><b>3.5</b> 関数</a></li>
+<li class="chapter" data-level="3.6" data-path="rにおけるオブジェクト.html"><a href="rにおけるオブジェクト.html#関数の自作"><i class="fa fa-check"></i><b>3.6</b> 関数の自作</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="データの要約1記述統計量.html"><a href="データの要約1記述統計量.html"><i class="fa fa-check"></i><b>4</b> データの要約1（記述統計量）</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="データの要約1記述統計量.html"><a href="データの要約1記述統計量.html#データの概観"><i class="fa fa-check"></i><b>4.1</b> データの概観</a></li>
+<li class="chapter" data-level="4.2" data-path="データの要約1記述統計量.html"><a href="データの要約1記述統計量.html#要約統計表の作成"><i class="fa fa-check"></i><b>4.2</b> 要約統計表の作成</a></li>
+<li class="chapter" data-level="4.3" data-path="データの要約1記述統計量.html"><a href="データの要約1記述統計量.html#相関表"><i class="fa fa-check"></i><b>4.3</b> 相関表</a></li>
+<li class="chapter" data-level="4.4" data-path="データの要約1記述統計量.html"><a href="データの要約1記述統計量.html#グループ分け"><i class="fa fa-check"></i><b>4.4</b> グループ分け</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="データの要約1記述統計量.html"><a href="データの要約1記述統計量.html#データフレームを分割する"><i class="fa fa-check"></i><b>4.4.1</b> データフレームを分割する</a></li>
+<li class="chapter" data-level="4.4.2" data-path="データの要約1記述統計量.html"><a href="データの要約1記述統計量.html#group_byを使う"><i class="fa fa-check"></i><b>4.4.2</b> group_by()を使う</a></li>
+<li class="chapter" data-level="4.4.3" data-path="データの要約1記述統計量.html"><a href="データの要約1記述統計量.html#xtabsを使う"><i class="fa fa-check"></i><b>4.4.3</b> xtabs()を使う</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="データの要約2グラフの作成.html"><a href="データの要約2グラフの作成.html"><i class="fa fa-check"></i><b>5</b> データの要約2(グラフの作成)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="データの要約2グラフの作成.html"><a href="データの要約2グラフの作成.html#ヒストグラム"><i class="fa fa-check"></i><b>5.1</b> ヒストグラム</a></li>
+<li class="chapter" data-level="5.2" data-path="データの要約2グラフの作成.html"><a href="データの要約2グラフの作成.html#箱ひげ図"><i class="fa fa-check"></i><b>5.2</b> 箱ひげ図</a></li>
+<li class="chapter" data-level="5.3" data-path="データの要約2グラフの作成.html"><a href="データの要約2グラフの作成.html#散布図"><i class="fa fa-check"></i><b>5.3</b> 散布図</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="母親の喫煙と新生児の出生時体重.html"><a href="母親の喫煙と新生児の出生時体重.html"><i class="fa fa-check"></i><b>6</b> 母親の喫煙と新生児の出生時体重</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="母親の喫煙と新生児の出生時体重.html"><a href="母親の喫煙と新生児の出生時体重.html#データの要約"><i class="fa fa-check"></i><b>6.1</b> データの要約</a></li>
+<li class="chapter" data-level="6.2" data-path="母親の喫煙と新生児の出生時体重.html"><a href="母親の喫煙と新生児の出生時体重.html#単回帰分析"><i class="fa fa-check"></i><b>6.2</b> 単回帰分析</a></li>
+<li class="chapter" data-level="6.3" data-path="母親の喫煙と新生児の出生時体重.html"><a href="母親の喫煙と新生児の出生時体重.html#重回帰分析"><i class="fa fa-check"></i><b>6.3</b> 重回帰分析</a></li>
+<li class="chapter" data-level="6.4" data-path="母親の喫煙と新生児の出生時体重.html"><a href="母親の喫煙と新生児の出生時体重.html#ダミー変数"><i class="fa fa-check"></i><b>6.4</b> ダミー変数</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ちょっとニッチなR入門1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="母親の喫煙と新生児の出生時体重" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> 母親の喫煙と新生児の出生時体重<a href="母親の喫煙と新生児の出生時体重.html#母親の喫煙と新生児の出生時体重" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>ここでは，母親の喫煙が新生児の出生時体重に与える影響を分析しながら，実際にデータ分析を行う際の手順を概観する。分析に用いるのは，Wooldridgeの”Introductory Econometrics: A Modern Approach”で用いられているbwghtというデータである。Wooldridgeの教科書は，具体的な分析例が多く非常にわかりやすい，計量経済学の最高の入門書である。教科書のなかで用いられているデータは，Rにwooldridgeパッケージを追加することで，簡単に利用することができる。まず，wooldridgeパッケージをインストールしよう。</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="母親の喫煙と新生児の出生時体重.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;wooldridge&quot;</span>)</span></code></pre></div>
+<div id="データの要約" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> データの要約<a href="母親の喫煙と新生児の出生時体重.html#データの要約" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>まず，データをbwghtというデータフレームに読み込む。その後，データがどのようなものかを知るために，glimpse()関数でデータの概要を表示させてみよう。</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="母親の喫煙と新生児の出生時体重.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb111-2"><a href="母親の喫煙と新生児の出生時体重.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
+<span id="cb111-3"><a href="母親の喫煙と新生児の出生時体重.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wooldridge)</span>
+<span id="cb111-4"><a href="母親の喫煙と新生児の出生時体重.html#cb111-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-5"><a href="母親の喫煙と新生児の出生時体重.html#cb111-5" aria-hidden="true" tabindex="-1"></a>bwght <span class="ot">&lt;-</span> bwght</span>
+<span id="cb111-6"><a href="母親の喫煙と新生児の出生時体重.html#cb111-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(bwght)</span></code></pre></div>
+<pre><code>## Rows: 1,388
+## Columns: 14
+## $ faminc   &lt;dbl&gt; 13.5, 7.5, 0.5, 15.5, 27.5, 7.5, 65.0, 27.5, 27.5, 37.5, 27.5…
+## $ cigtax   &lt;dbl&gt; 16.5, 16.5, 16.5, 16.5, 16.5, 16.5, 16.5, 16.5, 16.5, 16.5, 1…
+## $ cigprice &lt;dbl&gt; 122.3, 122.3, 122.3, 122.3, 122.3, 122.3, 122.3, 122.3, 122.3…
+## $ bwght    &lt;int&gt; 109, 133, 129, 126, 134, 118, 140, 86, 121, 129, 101, 133, 61…
+## $ fatheduc &lt;int&gt; 12, 6, NA, 12, 14, 12, 16, 12, 12, 16, 12, 16, NA, 12, 7, 13,…
+## $ motheduc &lt;int&gt; 12, 12, 12, 12, 12, 14, 14, 14, 17, 18, 16, 15, 12, 12, 12, 1…
+## $ parity   &lt;int&gt; 1, 2, 2, 2, 2, 6, 2, 2, 2, 2, 2, 1, 3, 1, 1, 1, 1, 1, 1, 2, 1…
+## $ male     &lt;int&gt; 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0…
+## $ white    &lt;int&gt; 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1…
+## $ cigs     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ lbwght   &lt;dbl&gt; 4.691348, 4.890349, 4.859812, 4.836282, 4.897840, 4.770685, 4…
+## $ bwghtlbs &lt;dbl&gt; 6.8125, 8.3125, 8.0625, 7.8750, 8.3750, 7.3750, 8.7500, 5.375…
+## $ packs    &lt;dbl&gt; 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0…
+## $ lfaminc  &lt;dbl&gt; 2.6026897, 2.0149031, -0.6931472, 2.7408400, 3.3141861, 2.014…</code></pre>
+<p>データには，famincからlfamincまで14の変数が含まれており，サンプルサイズは1,388であることがわかる。つまり，1,388件の新生児の出生について，14項目のデータが記録されたデータである。各変数の内容は以下の通りである。</p>
+<table>
+<thead>
+<tr class="header">
+<th>変数名</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>faminc</td>
+<td>家計収入(単位：1000ドル)</td>
+</tr>
+<tr class="even">
+<td>cigtax</td>
+<td>居住州のたばこ税</td>
+</tr>
+<tr class="odd">
+<td>cigprice</td>
+<td>居住州のたばこ価格</td>
+</tr>
+<tr class="even">
+<td>bwght</td>
+<td>出生時体重(単位：オンス)</td>
+</tr>
+<tr class="odd">
+<td>fatheduc</td>
+<td>父親の教育水準(修学年数)</td>
+</tr>
+<tr class="even">
+<td>motheduc</td>
+<td>母親の教育水準(修学年数)</td>
+</tr>
+<tr class="odd">
+<td>parity</td>
+<td>子どもの出生順位</td>
+</tr>
+<tr class="even">
+<td>male</td>
+<td>男児ダミー</td>
+</tr>
+<tr class="odd">
+<td>white</td>
+<td>白人ダミー</td>
+</tr>
+<tr class="even">
+<td>cigs</td>
+<td>母親の妊娠中の一日当たり喫煙量(本数)</td>
+</tr>
+<tr class="odd">
+<td>lbwght</td>
+<td>bwghtの対数値</td>
+</tr>
+<tr class="even">
+<td>packs</td>
+<td>母親の妊娠中の一日当たり喫煙量(箱数)</td>
+</tr>
+<tr class="odd">
+<td>lfaminc</td>
+<td>famincの対数値</td>
+</tr>
+</tbody>
+</table>
+<p>次に，データの要約統計量を見ておこう。どのようなデータを分析する場合にも，まず要約統計量を確認することが重要である。もし変数に欠損値があったり，異常なデータが紛れ込んだりしている場合，要約統計量を確認することでそのことに気がつくことも多い。</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="母親の喫煙と新生児の出生時体重.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bwght)</span></code></pre></div>
+<pre><code>##      faminc          cigtax         cigprice         bwght      
+##  Min.   : 0.50   Min.   : 2.00   Min.   :103.8   Min.   : 23.0  
+##  1st Qu.:14.50   1st Qu.:15.00   1st Qu.:122.8   1st Qu.:107.0  
+##  Median :27.50   Median :20.00   Median :130.8   Median :120.0  
+##  Mean   :29.03   Mean   :19.55   Mean   :130.6   Mean   :118.7  
+##  3rd Qu.:37.50   3rd Qu.:26.00   3rd Qu.:137.0   3rd Qu.:132.0  
+##  Max.   :65.00   Max.   :38.00   Max.   :152.5   Max.   :271.0  
+##                                                                 
+##     fatheduc        motheduc         parity           male       
+##  Min.   : 1.00   Min.   : 2.00   Min.   :1.000   Min.   :0.0000  
+##  1st Qu.:12.00   1st Qu.:12.00   1st Qu.:1.000   1st Qu.:0.0000  
+##  Median :12.00   Median :12.00   Median :1.000   Median :1.0000  
+##  Mean   :13.19   Mean   :12.94   Mean   :1.633   Mean   :0.5209  
+##  3rd Qu.:16.00   3rd Qu.:14.00   3rd Qu.:2.000   3rd Qu.:1.0000  
+##  Max.   :18.00   Max.   :18.00   Max.   :6.000   Max.   :1.0000  
+##  NA&#39;s   :196     NA&#39;s   :1                                       
+##      white             cigs            lbwght         bwghtlbs     
+##  Min.   :0.0000   Min.   : 0.000   Min.   :3.135   Min.   : 1.438  
+##  1st Qu.:1.0000   1st Qu.: 0.000   1st Qu.:4.673   1st Qu.: 6.688  
+##  Median :1.0000   Median : 0.000   Median :4.787   Median : 7.500  
+##  Mean   :0.7846   Mean   : 2.087   Mean   :4.760   Mean   : 7.419  
+##  3rd Qu.:1.0000   3rd Qu.: 0.000   3rd Qu.:4.883   3rd Qu.: 8.250  
+##  Max.   :1.0000   Max.   :50.000   Max.   :5.602   Max.   :16.938  
+##                                                                    
+##      packs           lfaminc       
+##  Min.   :0.0000   Min.   :-0.6931  
+##  1st Qu.:0.0000   1st Qu.: 2.6741  
+##  Median :0.0000   Median : 3.3142  
+##  Mean   :0.1044   Mean   : 3.0713  
+##  3rd Qu.:0.0000   3rd Qu.: 3.6243  
+##  Max.   :2.5000   Max.   : 4.1744  
+## </code></pre>
+<p>このデータでは，新生児の出生時体重はオンスという単位で記録されている。しかし，オンスという単位にはあまり馴染みがないと思うので，これをグラムに変換しておこう。1オンスは28.3495グラムなので，以下のように新しい変数bwghtgramを作成する。</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="母親の喫煙と新生児の出生時体重.html#cb115-1" aria-hidden="true" tabindex="-1"></a>bwght <span class="ot">&lt;-</span> bwght <span class="sc">%&gt;%</span></span>
+<span id="cb115-2"><a href="母親の喫煙と新生児の出生時体重.html#cb115-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bwghtgram =</span> bwght <span class="sc">*</span> <span class="fl">28.3495</span>)</span></code></pre></div>
+<p>次に，新生児の出生時体重はどのような分布になっているかを見ておこう。新しく作成したbwghtgramのヒストグラムを作成する。</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="母親の喫煙と新生児の出生時体重.html#cb116-1" aria-hidden="true" tabindex="-1"></a>bwght <span class="sc">%&gt;%</span></span>
+<span id="cb116-2"><a href="母親の喫煙と新生児の出生時体重.html#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bwghtgram)) <span class="sc">+</span></span>
+<span id="cb116-3"><a href="母親の喫煙と新生児の出生時体重.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">200</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb116-4"><a href="母親の喫煙と新生児の出生時体重.html#cb116-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;出生時体重&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb116-5"><a href="母親の喫煙と新生児の出生時体重.html#cb116-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">&quot;IPAexGothic&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p>ここでわれわれが分析したいのは，母親の妊娠中の喫煙数(本数)が新生児の出生時体重に与える影響である。そこで，母親の妊娠中の喫煙量(たばこの本数)の分布を見ておこう。</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="母親の喫煙と新生児の出生時体重.html#cb117-1" aria-hidden="true" tabindex="-1"></a>bwght <span class="sc">%&gt;%</span></span>
+<span id="cb117-2"><a href="母親の喫煙と新生児の出生時体重.html#cb117-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cigs)) <span class="sc">+</span></span>
+<span id="cb117-3"><a href="母親の喫煙と新生児の出生時体重.html#cb117-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb117-4"><a href="母親の喫煙と新生児の出生時体重.html#cb117-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;喫煙量&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb117-5"><a href="母親の喫煙と新生児の出生時体重.html#cb117-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">&quot;IPAexGothic&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<p>1,388人中1,200人に近い母親は，妊娠中に喫煙していなかったことがわかる。一方で，妊娠中に喫煙していた母親も一定数いるため，喫煙の有無と新生児の出生時体重との関係を分析することには意味がありそうだ。</p>
+<p>そこで，母親の妊娠中の喫煙数(本数)と新生児の出生時体重との関係を散布図で見てみよう。</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="母親の喫煙と新生児の出生時体重.html#cb118-1" aria-hidden="true" tabindex="-1"></a>bwght <span class="sc">%&gt;%</span></span>
+<span id="cb118-2"><a href="母親の喫煙と新生児の出生時体重.html#cb118-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cigs, <span class="at">y =</span> bwghtgram)) <span class="sc">+</span></span>
+<span id="cb118-3"><a href="母親の喫煙と新生児の出生時体重.html#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb118-4"><a href="母親の喫煙と新生児の出生時体重.html#cb118-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;喫煙量&quot;</span>, <span class="at">y =</span> <span class="st">&quot;出生時体重&quot;</span>) <span class="sc">+</span></span>
+<span id="cb118-5"><a href="母親の喫煙と新生児の出生時体重.html#cb118-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">&quot;IPAexGothic&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p>それほど明確にわかるわけではないが，母親の喫煙量が多いほど新生児の出生体重は低くなっているように見える。そこで，この2つの変数の相関係数を求めてみよう。</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="母親の喫煙と新生児の出生時体重.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(<span class="fu">select</span>(bwght, bwght, cigs))</span></code></pre></div>
+<pre><code>##            bwght       cigs
+## bwght  1.0000000 -0.1507618
+## cigs  -0.1507618  1.0000000</code></pre>
+<p>相関係数は-0.15であり，母親の喫煙量と新生児の出生時体重には負の相関があることがわかる。</p>
+</div>
+<div id="単回帰分析" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> 単回帰分析<a href="母親の喫煙と新生児の出生時体重.html#単回帰分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>相関係数は2変数間の線形関係の強さを表しているが，相関係数からは母親の喫煙量が1本増加すると新生児の出生時体重がどれだけ減少するかということを知ることはできない。そこで，さきほどの散布図に，母親の喫煙量と新生児の出生時体重の関係を近似する直線(<strong>回帰直線</strong>)を追加してみよう。</p>
+<p><span class="math inline">\(cigs\)</span>の値が与えられたとき，<span class="math inline">\(bwghtgram\)</span>の予測値<span class="math inline">\(\widehat{bwghtgram}\)</span>を以下のような一次式で表す。
+<span class="math display">\[
+\widehat{bwghtgram_i} = \hat{\beta_0} + \hat{\beta_1} cigs_i
+\]</span>
+この近似式による新生児の出生時体重の予測値<span class="math inline">\(\widehat{bwghtgram}\)</span>は，実際の<span class="math inline">\(bwghtgram\)</span>の値とは一致しない。そこで，以下の損失関数が最も小さくなるような係数<span class="math inline">\(\hat{\beta_0},\hat{\beta_1}\)</span>を求めるのが，最小二乗法である。
+<span class="math display">\[
+L(\hat{\beta_0},\hat{\beta_1}) = \sum_{i=1}^n (bwghtgram_i-\widehat{bwghtgram_i})^2
+\]</span></p>
+<p>ざっくりいえば，散布図上のすべての点を通る直線は引くことができないので，できるだけ当てはまりの良い直線を見つけるというのが回帰分析である。当てはまりの良さの尺度はさまざまなものが考えられるが，最小二乗法では予測値と実際の値の差(<strong>残差</strong>という)の二乗の和を用いる。残差二乗和が最も小さくなるような直線によって2変数の関係を近似するのである。</p>
+<p>散布図上に回帰直線を描くだけであれば，以下のようにggplotでstat_smooth()を追加すれば良い。</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="母親の喫煙と新生児の出生時体重.html#cb121-1" aria-hidden="true" tabindex="-1"></a>bwght <span class="sc">%&gt;%</span></span>
+<span id="cb121-2"><a href="母親の喫煙と新生児の出生時体重.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cigs, <span class="at">y =</span> bwghtgram)) <span class="sc">+</span></span>
+<span id="cb121-3"><a href="母親の喫煙と新生児の出生時体重.html#cb121-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb121-4"><a href="母親の喫煙と新生児の出生時体重.html#cb121-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># 回帰直線を描く</span></span>
+<span id="cb121-5"><a href="母親の喫煙と新生児の出生時体重.html#cb121-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;喫煙量&quot;</span>, <span class="at">y =</span> <span class="st">&quot;出生時体重&quot;</span>) <span class="sc">+</span></span>
+<span id="cb121-6"><a href="母親の喫煙と新生児の出生時体重.html#cb121-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">&quot;IPAexGothic&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<p>描かれた回帰直線は右下がりであり，母親の喫煙量が増加すれば新生児の出生時体重が減少することを示唆している。</p>
+<p>この回帰直線の式は，lm()関数により求めることができる。lm()関数には，引数として回帰式とデータを渡す。回帰式はbwghtgram ~ cigsのように，~ の左に被説明変数を，右に説明変数を書く。回帰式の計算結果はsimple_regressionというオブジェクトを作成してそこに格納し，stargazer()関数を使って結果を表示させる。</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="母親の喫煙と新生児の出生時体重.html#cb124-1" aria-hidden="true" tabindex="-1"></a>simple_regression <span class="ot">&lt;-</span> <span class="fu">lm</span>(bwghtgram <span class="sc">~</span> cigs, <span class="at">data =</span> bwght)</span>
+<span id="cb124-2"><a href="母親の喫煙と新生児の出生時体重.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(simple_regression, <span class="at">type =</span> <span class="st">&quot;text&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## ===============================================
+##                         Dependent variable:    
+##                     ---------------------------
+##                              bwghtgram         
+## -----------------------------------------------
+## cigs                        -14.565***         
+##                               (2.565)          
+##                                                
+## Constant                   3,395.473***        
+##                              (16.226)          
+##                                                
+## -----------------------------------------------
+## Observations                   1,388           
+## R2                             0.023           
+## Adjusted R2                    0.022           
+## Residual Std. Error     570.635 (df = 1386)    
+## F Statistic          32.235*** (df = 1; 1386)  
+## ===============================================
+## Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<p>この結果は，<span class="math inline">\(\hat{\beta_0}\)</span>が3,395.4，<span class="math inline">\(\hat{\beta_1}\)</span>が-14.6であることを意味している。<span class="math inline">\(\hat{\beta_0}\)</span>は定数項(Constant)や切片といわれ，<span class="math inline">\(cigs\)</span>がゼロのときの<span class="math inline">\(\widehat{bwghtgram}\)</span>である。<span class="math inline">\(\hat{\beta_1}\)</span>は傾きで，<span class="math inline">\(cigs\)</span>が1本増加したときにどれだけ<span class="math inline">\(\widehat{bwghtgram}\)</span>が変化するかを表している。この場合，<span class="math inline">\(\hat{\beta_1}\)</span>は-14.6であるから，母親の喫煙量が1本増加すれば，新生児の体重が14.6グラム減少する。</p>
+<p><span class="math inline">\(\hat{\beta_0}, \hat{\beta_1}\)</span>の下の括弧内の数値は標準誤差である。係数についている*印は，係数の統計的有意性を表している。</p>
+</div>
+<div id="重回帰分析" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> 重回帰分析<a href="母親の喫煙と新生児の出生時体重.html#重回帰分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>新生児の出生時体重に影響を与える要因は母親の喫煙だけではない。たとえば，家計収入は妊娠中の環境や栄養状態を通じて，新生児の出生時体重に影響を与えると考えられる。問題なのは，家計収入が低い家計の母親ほど喫煙量が多いとすれば，母親の喫煙量と新生児の出生時体重に相関があったとしても，実際に新生児の出生時体重に影響を与えているのは家計収入であって母親の喫煙量ではないかもしれないということである。そのため，家計収入が同じで母親の喫煙量が異なる場合に，新生児の出生時体重がどのように異なるかを分析することが必要である。</p>
+<p>そこで以下のような回帰式を考えよう。
+<span class="math display">\[
+\widehat{bwghtgram_i} = \hat{\beta_0} + \hat{\beta_1} cigs_i + \hat{\beta_2} faminc
+\]</span>
+説明変数が複数ある場合にも，最小自乗法を用いて<span class="math inline">\(\hat{\beta_0}, \hat{\beta_1}, \hat{\beta_2}\)</span>を求めることができる。このとき，<span class="math inline">\(\hat{\beta_1}\)</span>は，<span class="math inline">\(faminc\)</span>を一定として<span class="math inline">\(cigs\)</span>が1本増加したときにどれだけ<span class="math inline">\(\widehat{bwghtgram}\)</span>が変化するかを表している。同様に，<span class="math inline">\(\hat{\beta_2}\)</span>は<span class="math inline">\(cigs\)</span>を一定として，<span class="math inline">\(faminc\)</span>が1,000ドル増加したときにどれだけ<span class="math inline">\(\widehat{bwghtgram}\)</span>が変化するかを表している。つまり重回帰分析を使えば，ほかの説明変数を一定として(計量経済学では「<strong>コントロール</strong>して」という)，着目する説明変数が変化したときに被説明変数がどのように変化するかを分析することができる。</p>
+<p>説明変数が複数ある場合には，lm()関数の回帰式の右辺に説明変数を+で結んで書く。たとえば，被説明変数がbwghtgra，説明変数がcigsとfamincの回帰式は，bwghtgram ~ cigs + faminicと表す。</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="母親の喫煙と新生児の出生時体重.html#cb126-1" aria-hidden="true" tabindex="-1"></a>simple_regression <span class="ot">&lt;-</span> <span class="fu">lm</span>(bwghtgram <span class="sc">~</span> cigs <span class="sc">+</span> faminc, <span class="at">data =</span> bwght)</span>
+<span id="cb126-2"><a href="母親の喫煙と新生児の出生時体重.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(simple_regression, <span class="at">type =</span> <span class="st">&quot;text&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## ===============================================
+##                         Dependent variable:    
+##                     ---------------------------
+##                              bwghtgram         
+## -----------------------------------------------
+## cigs                        -13.137***         
+##                               (2.596)          
+##                                                
+## faminc                       2.630***          
+##                               (0.827)          
+##                                                
+## Constant                   3,316.158***        
+##                              (29.738)          
+##                                                
+## -----------------------------------------------
+## Observations                   1,388           
+## R2                             0.030           
+## Adjusted R2                    0.028           
+## Residual Std. Error     568.771 (df = 1385)    
+## F Statistic          21.274*** (df = 2; 1385)  
+## ===============================================
+## Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<p>famincを説明変数に加えた結果，cigsの係数は単回帰の場合に比べて絶対値で少し小さくなった。すなわち，母親の喫煙量と新生児の出生時体重との相関の一部は家計収入の影響によるものである。しかし，家計収入が同じであっても，やはり母親の喫煙量が1本増加すれば新生児の出生時体重が13.1グラムは減少するということもわかる。また，母親の喫煙量が同じであれば，家計収入が1,000ドル増加すれば新生児の出生時体重が2.6グラム増加する。</p>
+<p>もちろん，新生児の出生時体重に影響を与えるすべての要因を回帰式に含めることはできない。すべての要因がデータに記録されているわけではないからである。回帰式に含めることができない要因が説明変数と相関していれば，最小二乗法によって求めた係数にはバイアスが生じる。これを<strong>欠落変数</strong>バイアスという。たとえば，新生児の出生時体重に影響を与える要因が母親の喫煙量と家計収入の2つであるとすれば，新生児の出生時体重を説明するモデルの説明変数に家計収入を入れず母親の喫煙量だけで回帰すると，母親の喫煙量の効果の推定量には欠落変数バイアスが生じる。</p>
+<p>欠落変数バイアスの問題を解決することは難しいが，どのようなバイアスが生じているかを考えることが重要である。また，少なくてもデータに記録されている要因はできるだけ説明変数に加えて回帰式を推定することが望ましい。</p>
+<p>このデータセットには，新生児の性別や出生順位，両親の教育水準，人種が記録されている。そこで，これらの情報を用いて重回帰分析を行おう。</p>
+<p>まず，分析に利用する変数だけを含むデータフレームdatasetを作成する。</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="母親の喫煙と新生児の出生時体重.html#cb128-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">select</span>(bwght, bwghtgram, cigs, lfaminc, parity, motheduc, fatheduc, male, white)</span></code></pre></div>
+<p>レポートや論文を書くときには，分析に利用した変数の要約統計量を示す必要がある。レポートや論文に掲載する要約統計表を作成するには，stargazerパッケージが便利だ。</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="母親の喫煙と新生児の出生時体重.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(dataset, <span class="at">type =</span> <span class="st">&quot;text&quot;</span>, <span class="at">title =</span> <span class="st">&quot;要約統計表&quot;</span>, <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb129-2"><a href="母親の喫煙と新生児の出生時体重.html#cb129-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">summary.stat =</span> <span class="fu">c</span>(<span class="st">&quot;n&quot;</span>, <span class="st">&quot;mean&quot;</span>, <span class="st">&quot;sd&quot;</span>, <span class="st">&quot;min&quot;</span>, <span class="st">&quot;p25&quot;</span>, <span class="st">&quot;median&quot;</span>, <span class="st">&quot;p75&quot;</span>, <span class="st">&quot;max&quot;</span>))</span></code></pre></div>
+<pre><code>## 
+## 要約統計表
+## ============================================================================
+## Statistic   N     Mean   St. Dev.  Min   Pctl(25)  Median  Pctl(75)   Max   
+## ----------------------------------------------------------------------------
+## bwghtgram 1,388 3,365.07  577.02  652.04 3,033.40 3,401.94 3,742.13 7,682.71
+## cigs      1,388   2.09     5.97     0       0        0        0        50   
+## lfaminc   1,388   3.07     0.92   -0.69    2.67     3.31     3.62     4.17  
+## parity    1,388   1.63     0.89     1       1        1        2        6    
+## motheduc  1,387  12.94     2.38     2       12       12       14       18   
+## fatheduc  1,192  13.19     2.75     1       12       12       16       18   
+## male      1,388   0.52     0.50     0       0        1        1        1    
+## white     1,388   0.78     0.41     0       1        1        1        1    
+## ----------------------------------------------------------------------------</code></pre>
+<p>次に，父親と母親の修学年数を除くすべての変数を説明変数として重回帰分析を行う。</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="母親の喫煙と新生児の出生時体重.html#cb131-1" aria-hidden="true" tabindex="-1"></a>simple_regression <span class="ot">&lt;-</span> <span class="fu">lm</span>(bwghtgram <span class="sc">~</span> cigs <span class="sc">+</span> lfaminc <span class="sc">+</span> parity <span class="sc">+</span> male <span class="sc">+</span> white, <span class="at">data =</span> bwght)</span>
+<span id="cb131-2"><a href="母親の喫煙と新生児の出生時体重.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(simple_regression, <span class="at">type =</span> <span class="st">&quot;text&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## ===============================================
+##                         Dependent variable:    
+##                     ---------------------------
+##                              bwghtgram         
+## -----------------------------------------------
+## cigs                        -14.056***         
+##                               (2.572)          
+##                                                
+## lfaminc                       32.790*          
+##                              (17.905)          
+##                                                
+## parity                       50.981***         
+##                              (17.024)          
+##                                                
+## male                         90.104***         
+##                              (30.280)          
+##                                                
+## white                       159.457***         
+##                              (39.404)          
+##                                                
+## Constant                   3,038.433***        
+##                              (66.918)          
+##                                                
+## -----------------------------------------------
+## Observations                   1,388           
+## R2                             0.052           
+## Adjusted R2                    0.048           
+## Residual Std. Error     562.887 (df = 1382)    
+## F Statistic          15.110*** (df = 5; 1382)  
+## ===============================================
+## Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<p>この結果の解釈は以下のようになる。</p>
+<ul>
+<li>他の要因を一定として，母親の1日の喫煙量が1本増加すれば，新生児の出生時体重は14グラム減少する</li>
+<li>他の要因を一定として，家計収入が1,000ドル増加すれば，新生児の出生時体重は33グラム増加する</li>
+<li>他の要因を一定として，出生順位が1つ増加すれば，新生児の出生時体重は51グラム増加する</li>
+<li>他の要因を一定として，男児の出生時体重は女児よりも90グラム重い</li>
+<li>他の要因を一定として，白人の出生時体重は他の人種よりも159グラム重い</li>
+</ul>
+</div>
+<div id="ダミー変数" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> ダミー変数<a href="母親の喫煙と新生児の出生時体重.html#ダミー変数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>上の重回帰分析で，maleやwhiteという説明変数を用いた。maleには新生児が男児であれば1，女児であれば0が記録されている。whiteには新生児が白人であれば1，それ以外の人種であれば0が記録されている。このように，数値では表すことができないカテゴリ情報を0と1によって表した変数を<strong>ダミー変数</strong>という。ダミー変数を説明変数に用いた場合，その係数はどのように解釈できるだろうか。</p>
+<p>いま，単純化のために以下のような回帰式を考えよう。
+<span class="math display">\[
+\widehat{bwghtgram} = \hat{\beta}_0 + \hat{\beta}_1 cigs + \hat{\beta}_2 male
+\]</span>
+もし新生児が男児であれば，male=1であるため，この回帰式は，
+<span class="math display">\[
+\widehat{bwghtgram} = \hat{\beta}_0 + \hat{\beta}_1 cigs + \hat{\beta}_2
+\]</span>
+となる。一方で，もし新生児が女児であれば，male=0であるため，この回帰式は，
+<span class="math display">\[
+\widehat{bwghtgram} = \hat{\beta}_0 + \hat{\beta}_1 cigs
+\]</span>
+となる。すなわち，新生児が男児の場合と女児の場合では，出生時体重の予測値が<span class="math inline">\(\hat{\beta}_2\)</span>だけ異なる。したがって，maleの係数の推定値<span class="math inline">\(\hat{\beta}_2\)</span>は，他の要因を一定として(この場合は母親の喫煙量が同じであるとして)女児に比べて男児の出生時体重がどれだけ重いかということを表している。</p>
+<p>カテゴリが3つ以上の場合には，カテゴリ数-1だけのダミー変数を作成して説明変数に用いる。たとえば，地域として北海道，本州，四国，九州・沖縄の4つのうちのどれかが記録されている変数があるとする。この場合には，本州を基準として，北海道ダミー，四国ダミー，九州・沖縄ダミーの3つのダミー変数を作成して説明変数として用いれば良い。</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="データの要約2グラフの作成.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
