@@ -16,16 +16,19 @@ Windowsの場合には，WSLという仮想環境のLinuxにRをインストー�
 
 矢内先生の資料通りに進めても良いが，とにかく速くインストールして使いたいということであれば，Homebrewを使うのが良い。
 
-- HomebrewはMacのパッケージマネージャ。ソフトのインストールやアップグレードの管理が容易にできるようになるので，おすすめ。
-  - RとRStudioもHomebrewを使えば簡単にインストールできる。
-  - Homebrewをインストールしていない人は，ターミナルで以下のコマンドを実行すればインストール可能(詳細は，[ここ](https://brew.sh/index_ja)を参照)。
-  - Command Line ToolsはHomebrewをインストールする際自動的にインストールされる。
+-   HomebrewはMacのパッケージマネージャ。ソフトのインストールやアップグレードの管理が容易にできるようになるので，おすすめ。
 
-    ```{bash eval=F}
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
+    -   RとRStudioもHomebrewを使えば簡単にインストールできる。
 
-- Homebrewがインストールできたら，ターミナルで以下のコマンドを実行することでRとRStudio，ついでにXquartzをインストールできる。
+    -   Homebrewをインストールしていない人は，ターミナルで以下のコマンドを実行すればインストール可能(詳細は，[ここ](https://brew.sh/index_ja)を参照)。
+
+    -   Command Line ToolsはHomebrewをインストールする際自動的にインストールされる。
+
+        ```{bash eval=F}
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        ```
+
+-   Homebrewがインストールできたら，ターミナルで以下のコマンドを実行することでRとRStudio，ついでにXquartzをインストールできる。
 
     ```{bash eval=F}
     brew install --cask r rstudio xquartz
@@ -35,15 +38,15 @@ Windowsの場合には，WSLという仮想環境のLinuxにRをインストー�
 
 WindowsにRをインストールする際には，事前にいくつかの設定を行っておく必要がある。矢内先生の資料に丁寧にまとめられているので，それを見ながらインストールすると良い。以下補足。
 
-- プログラミング用フォントのインストールはとりあえず飛ばしてもかまわない。
-- RtoolsもとりあえずなくてもOk(パッケージをソースコードからビルドする場合に必要だが，ほとんどのパッケージはビルド済みのバイナリが提供されている)。
-- 全角文字(とくに全角スペース)が含まれるホーム・フォルダ名の問題は，Rに限らずさまざまなソフトで問題を引き起こすので，対処しておく必要がある。
-  - 最近ではMicrosoftアカウントでWindowsをセットアップすると，Microsoftアカウント(メールアドレス)の最初の5文字がホーム・フォルダ名になるはずなので，通常は問題ないはず。
-  - ホームフォルダ名に漢字などの全角文字が使われている場合は，いっそのことOSを初期化してMicrosoftアカウントを使って再セットアップした方がいいかもしれない(ユーザー名だけを変更しても，ホームフォルダ名は変わらない)。
-  - 初期化したくない場合には，矢内先生の資料の対処法その3(シンボリックリンク作成)が良いと思う。
-- One Drive問題にも対処が必要。
-  - Rはパッケージをドキュメント・フォルダにインストールする。ドキュメント・フォルダがOneDriveに管理されていると，フォルダ名に全角文字(カタカナで"ドキュメント")が含まれるためパッケージを読み込むことができなくなる。
-  - Office 365のOneDriveを使っている場合には，矢内先生の資料の対処法その3で，パッケージをインストールするフォルダとして別の場所を指定するのが良い。
+-   プログラミング用フォントのインストールはとりあえず飛ばしてもかまわない。
+-   RtoolsもとりあえずなくてもOk(パッケージをソースコードからビルドする場合に必要だが，ほとんどのパッケージはビルド済みのバイナリが提供されている)。
+-   全角文字(とくに全角スペース)が含まれるホーム・フォルダ名の問題は，Rに限らずさまざまなソフトで問題を引き起こすので，対処しておく必要がある。
+    -   最近ではMicrosoftアカウントでWindowsをセットアップすると，Microsoftアカウント(メールアドレス)の最初の5文字がホーム・フォルダ名になるはずなので，通常は問題ないはず。
+    -   ホームフォルダ名に漢字などの全角文字が使われている場合は，いっそのことOSを初期化してMicrosoftアカウントを使って再セットアップした方がいいかもしれない(ユーザー名だけを変更しても，ホームフォルダ名は変わらない)。
+    -   初期化したくない場合には，矢内先生の資料の対処法その3(シンボリックリンク作成)が良いと思う。
+-   One Drive問題にも対処が必要。
+    -   Rはパッケージをドキュメント・フォルダにインストールする。ドキュメント・フォルダがOneDriveに管理されていると，フォルダ名に全角文字(カタカナで"ドキュメント")が含まれるためパッケージを読み込むことができなくなる。
+    -   Office 365のOneDriveを使っている場合には，矢内先生の資料の対処法その3で，パッケージをインストールするフォルダとして別の場所を指定するのが良い。
 
 ### WSL (Windows Subsystem for Linux)
 
@@ -55,12 +58,12 @@ WSLはWindows上で動作するLinuxの仮想環境。Windowsマシン上でも�
 
 #### WSL2のインストール
 
-- BIOSで仮想化支援機能を有効にする
-  - 有効になっているかどうかは[VirtualChecker](https://openlibsys.org/index-ja.html)で確認できる(最初から有効になっている場合もある)
-  - BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目
-- Windows 10 バージョン 2004 以降では，PowerShellで以下のように入力すればインストールできる(仮想化支援機能の有効化は必要)。デフォルトでUbuntuもインストールされるので，これだけですぐに使えるようになる。
+-   BIOSで仮想化支援機能を有効にする
+    -   有効になっているかどうかは[VirtualChecker](https://openlibsys.org/index-ja.html)で確認できる(最初から有効になっている場合もある)
+    -   BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目
+-   Windows 10 バージョン 2004 以降では，PowerShellで以下のように入力すればインストールできる(仮想化支援機能の有効化は必要)。デフォルトでUbuntuもインストールされるので，これだけですぐに使えるようになる。
 
-```powershell
+``` powershell
 wsl --install
 ```
 
@@ -68,17 +71,17 @@ wsl --install
 
 スタートメニューなどにUbuntuのショートカットが追加されているので起動する。初回起動時は，設定が行われるため数分かかる。 起動すると新規ユーザー名とパスワードを聞かれるので適当に設定すれば良い(パスワードは入力しても表示されないので注意)。パスワードはWindowsよりも頻繁に入力を求められるので入力しやすいものにしておいた方が良い。
 
-- 起動したら，まず以下のコマンドでパッケージのアップデートを行っておく。
+-   起動したら，まず以下のコマンドでパッケージのアップデートを行っておく。
 
-```bash
+``` bash
 sudo apt update
 sudo apt upgrade -y
 ```
 
-- WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに"&#x00A5;&#x00A5;wsl$"と入力
-- WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを使うには，wslコマンド，もしくはubuntu runコマンドを使う
+-   WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに"¥¥wsl\$"と入力
+-   WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを使うには，wslコマンド，もしくはubuntu runコマンドを使う
 
-```bash
+``` bash
 wsl ls -l
 ubuntu run ls -l
 ```
@@ -93,40 +96,40 @@ RStudio Serverのメリットは，インストールしたマシン以外から
 
 基本的には，[ここ](https://support.rstudio.com/hc/en-us/articles/360049776974-Using-RStudio-Server-in-Windows-WSL2)で解説されている通りにやればできる。
 
-- まず，証明書とレポジトリを追加
+-   まず，証明書とレポジトリを追加
 
-```bash
+``` bash
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
 ```
 
-- RおよびRStudio Serverを使うために必要なパッケージをインストール
+-   RおよびRStudio Serverを使うために必要なパッケージをインストール
 
-```bash
+``` bash
 sudo apt install -y r-base r-base-core r-recommended r-base-dev gdebi-core build-essential libcurl4-gnutls-dev libxml2-dev libssl-dev
 ```
 
-- Ubuntu用のRStudio Serverをダウンロード
+-   Ubuntu用のRStudio Serverをダウンロード
 
-```bash
+``` bash
 wget https://rstudio.org/download/latest/stable/server/bionic/rstudio-server-latest-amd64.deb
 ```
 
-- RStudio Serverのインストール("Couldn’t find an alternative telinit implementation to spawn."というメッセージが出るが，無視してよいとのこと)
+-   RStudio Serverのインストール("Couldn’t find an alternative telinit implementation to spawn."というメッセージが出るが，無視してよいとのこと)
 
-```bash
+``` bash
 sudo gdebi rstudio-server-latest-amd64.deb
 ```
 
-- RStudio Serverを起動
+-   RStudio Serverを起動
 
-```bash
+``` bash
 sudo rstudio-server start
 ```
 
-- [http://localhost:8787](http://localhost:8787)にアクセスしてRStudio Serverが動いていることを確認
-- ユーザー名とパスワードは，Ubuntuに設定したもの
-- LAN内のほかのPCやインターネット経由でもアクセスできるようにすれば便利(ただし，このまま外部からアクセスできるようにするのは危険)
+-   <http://localhost:8787>にアクセスしてRStudio Serverが動いていることを確認
+-   ユーザー名とパスワードは，Ubuntuに設定したもの
+-   LAN内のほかのPCやインターネット経由でもアクセスできるようにすれば便利(ただし，このまま外部からアクセスできるようにするのは危険)
 
 ## RStudioの画面
 
@@ -140,10 +143,10 @@ RStudioの画面は，デフォルトで4ペイン(4分割)。最初はそのま
 
 各ペインにはタブが複数配置されている。まずは，よく使うものだけ説明する。
 
-- Sourceペイン：デフォルトでは左上。何もファイルが開かれていない状態では最小化されているので，画面左上の+マークで新しいスクリプト・ファイル(R Script)を作成してみよう。
-- Consoleペイン：デフォルトでは左下。Rにコマンドを入力して実行する画面。
-- Environmentなどのペイン：デフォルトでは右上。Environmentタブには記憶されている変数やデータなどが表示される。Historyタブには実行したコマンドの履歴が表示され，選択して再度実行できる。
-- Filesなどのペイン：デフォルトでは右下。Filesタブには現在のディレクトリにあるファイルのリストが表示される。ファイル名をクリックすればファイルを開くことができる。RのソースコードなどやデータフレームはSourceペインで開かれる。Plotsタブはグラフが表示される場所。
+-   Sourceペイン：デフォルトでは左上。何もファイルが開かれていない状態では最小化されているので，画面左上の+マークで新しいスクリプト・ファイル(R Script)を作成してみよう。
+-   Consoleペイン：デフォルトでは左下。Rにコマンドを入力して実行する画面。
+-   Environmentなどのペイン：デフォルトでは右上。Environmentタブには記憶されている変数やデータなどが表示される。Historyタブには実行したコマンドの履歴が表示され，選択して再度実行できる。
+-   Filesなどのペイン：デフォルトでは右下。Filesタブには現在のディレクトリにあるファイルのリストが表示される。ファイル名をクリックすればファイルを開くことができる。RのソースコードなどやデータフレームはSourceペインで開かれる。Plotsタブはグラフが表示される場所。
 
 Rで単発のコマンドを実行するときには，Consoleタブで行う。ただし，通常はスクリプト・ファイルにコマンドを書いて一つずつ実行していったり，いくつかのコマンドをまとめて実行したりすることが多い。Consoleでコマンドを実行した場合にも，Histroyタブからスクリプト・ファイルへと実行したコマンドを貼り付けておくと良い。そうすれば，いつでも作業を最初から再現できる。研究では，結果を再現できることが極めて重要。再現性を担保できることは，ExcelではなくRを使うメリットの一つ。
 
