@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 RとRStudioのインストール | ちょっとニッチなR入門1</title>
   <meta name="description" content="Chapter 2 RとRStudioのインストール | ちょっとニッチなR入門1" />
-  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 RとRStudioのインストール | ちょっとニッチなR入門1" />
   <meta property="og:type" content="book" />
@@ -55,7 +55,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -118,6 +118,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -135,15 +139,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">ちょっとニッチなR入門</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
 <li class="chapter" data-level="2" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html"><i class="fa fa-check"></i><b>2</b> RとRStudioのインストール</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#rが使えるパソコン"><i class="fa fa-check"></i><b>2.1</b> Rが使えるパソコン</a></li>
 <li class="chapter" data-level="2.2" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#インストール方法"><i class="fa fa-check"></i><b>2.2</b> インストール方法</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#mac"><i class="fa fa-check"></i><b>2.2.1</b> Mac</a></li>
-<li class="chapter" data-level="2.2.2" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#windows"><i class="fa fa-check"></i><b>2.2.2</b> Windows</a></li>
-<li class="chapter" data-level="2.2.3" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#wsl-windows-subsystem-for-linux"><i class="fa fa-check"></i><b>2.2.3</b> WSL (Windows Subsystem for Linux)</a></li>
+<li class="chapter" data-level="2.2.1" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#macにhomebrewを使ってインストールする"><i class="fa fa-check"></i><b>2.2.1</b> MacにHomebrewを使ってインストールする</a></li>
+<li class="chapter" data-level="2.2.2" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#dockerイメージを使う"><i class="fa fa-check"></i><b>2.2.2</b> Dockerイメージを使う</a></li>
+<li class="chapter" data-level="2.2.3" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#wslにインストールして使う"><i class="fa fa-check"></i><b>2.2.3</b> WSLにインストールして使う</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#rstudioの画面"><i class="fa fa-check"></i><b>2.3</b> RStudioの画面</a></li>
 <li class="chapter" data-level="2.4" data-path="rとrstudioのインストール.html"><a href="rとrstudioのインストール.html#ヘルプの参照"><i class="fa fa-check"></i><b>2.4</b> ヘルプの参照</a></li>
@@ -208,124 +212,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 2</span> RとRStudioのインストール<a href="rとrstudioのインストール.html#rとrstudioのインストール" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="rが使えるパソコン" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Rが使えるパソコン<a href="rとrstudioのインストール.html#rが使えるパソコン" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Rはオープン・ソースで開発されており，Windows，Mac，Linuxのいずれでも利用可能。Rそのものは性能の低いマシンでも十分に動作する(ただし，分析するデータの規模や用いる分析手法によってはある程度高性能なパソコンが必要になるかもしれない)。また，RStudioはRを便利に使うために必須と言えるソフトウェア。</p>
-<p>これからパソコンを用意するという人には，Mac &gt; Linux &gt; Windowsの順でおすすめする。(わたしが)Rを使っていてトラブルが少ないのはMac。LinuxもMacと共通の部分が多く安定しているが，一般の人にはあまり馴染みがないと思うので，R以外の用途を考えると選択肢からは外れそう。Windowsは最初に少し設定が必要なのと，フォルダやファイル名に注意して利用する必要がある。といっても，いま使っているPCがWindowsであれば，買い換えるほどのものでもない。</p>
-<p>Windowsの場合には，WSLという仮想環境のLinuxにRをインストールして使うことも可能。わたしは，WSLにRとRStudio Serverをインストールして，ChromeなどのブラウザでRStudioを使っている(快適)。</p>
+<p>Rはオープン・ソースで開発されており，Windows，Mac，Linuxのいずれでも利用可能。Rそのものは性能の低いマシンでも十分に動作する(ただし，分析するデータの規模や用いる分析手法によってはある程度高性能なパソコンが必要になるかもしれない)。また，RStudioは統合開発環境(Rのコードを編集したり実行したりできるだけでなく，プロジェクトの管理などもできる)。Rを使う上で必須と言えるソフトウェア。デスクトップアプリケーションと，Webブラウザをインターフェイスとして利用するRStudio Serverの2種類がある。どちらも基本的には無料で使える。</p>
+<p>Rを使うのであれば，個人的にはRStudio ServerがセットアップされたDockerイメージを用いるのがおすすめ。セットアップのコストが最小限ですむ上に，OSに関係なく使うことができる。複数のパソコン(OSが違っていてもOk)を使う場合にも，簡単に同じ環境を構築できる。</p>
+<p>Dockerを利用しないのであれば，OSはMacかLinuxがおすすめ。Windowsは，少しパソコンに詳しいのであれば問題ないと思うが，MacやLinuxにくらべてWindowsならではのトラブルが多い。ただし，WindowsにはWSL(Windows Subsystem for Linux)という仮想環境が用意されており，その上でLinuxを動かすことができる。WindowsでRを使うのであれば，WSL上のLinuxにRやRStudio Sercerをインストールして使うのがおすすめ。</p>
+<p>まとめると，おすすめ順に</p>
+<ol style="list-style-type: decimal">
+<li>DockerでRStudio Serverを使う(どのOSでも同じ環境を構築可能)</li>
+<li>Mac(もしくはLinux)にインストールして使う</li>
+<li>WindowsのWSL上にRStudio Serverをインストールして使う</li>
+<li>Windowsにインストールして使う</li>
+</ol>
 </div>
 <div id="インストール方法" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> インストール方法<a href="rとrstudioのインストール.html#インストール方法" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>インストールの方法については，<a href="https://yukiyanai.github.io/jp/resources/">高知工科大学の矢内先生のホームページ</a>に，これ以上丁寧に説明することはできないというくらいに丁寧な解説スライドが公開されている。Ubuntu，Mac，Windows版があるので，これらを参考にインストールすると良い。ただし，うまくいかなくても矢内先生に直接質問のメールを送ったりはしないこと。</p>
-<div id="mac" class="section level3 hasAnchor" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Mac<a href="rとrstudioのインストール.html#mac" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>矢内先生の資料通りに進めても良いが，とにかく速くインストールして使いたいということであれば，Homebrewを使うのが良い。</p>
+<p>インストールの方法については<a href="https://yukiyanai.github.io/jp/resources/">高知工科大学の矢内先生のホームページ</a>に，これ以上丁寧に説明することはできないというくらいに丁寧な解説スライドが公開されている。Ubuntu，Mac，Windows版があるので，これらを参考にインストールすると良い。ただし，うまくいかなくても矢内先生に直接質問のメールを送ったりはしないこと。以下は，補足。</p>
+<div id="macにhomebrewを使ってインストールする" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> MacにHomebrewを使ってインストールする<a href="rとrstudioのインストール.html#macにhomebrewを使ってインストールする" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Homebrewを使うとRとRStudioをまとめて簡単にインストールできる。</p>
 <ul>
-<li><p>HomebrewはMacのパッケージマネージャ。ソフトのインストールやアップグレードの管理が容易にできるようになるので，おすすめ。</p>
+<li><p>HomebrewはMacのパッケージマネージャ。ソフトのインストールやアップグレードの管理が容易にできるようになる。</p>
 <ul>
-<li><p>RとRStudioもHomebrewを使えば簡単にインストールできる。</p></li>
-<li><p>Homebrewをインストールしていない人は，ターミナルで以下のコマンドを実行すればインストール可能(詳細は，<a href="https://brew.sh/index_ja">ここ</a>を参照)。</p></li>
-<li><p>Command Line ToolsはHomebrewをインストールする際自動的にインストールされる。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="rとrstudioのインストール.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/bin/bash</span> <span class="at">-c</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="va">)</span><span class="st">&quot;</span></span></code></pre></div></li>
-</ul></li>
+<li>RとRStudioもHomebrewを使えば簡単にインストールできる。</li>
+<li>Homebrewをインストールしていない人は，ターミナルで以下のコマンドを実行すればインストール可能(詳細は，<a href="https://brew.sh/ja/">ここ</a>を参照)。</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="rとrstudioのインストール.html#cb1-1" tabindex="-1"></a><span class="ex">/bin/bash</span> <span class="at">-c</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="va">)</span><span class="st">&quot;</span></span></code></pre></div></li>
 <li><p>Homebrewがインストールできたら，ターミナルで以下のコマンドを実行することでRとRStudio，ついでにXquartzをインストールできる。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="rとrstudioのインストール.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> r rstudio xquartz</span></code></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="rとrstudioのインストール.html#cb2-1" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> r rstudio xquartz</span></code></pre></div></li>
 </ul>
 </div>
-<div id="windows" class="section level3 hasAnchor" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Windows<a href="rとrstudioのインストール.html#windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>WindowsにRをインストールする際には，事前にいくつかの設定を行っておく必要がある。矢内先生の資料に丁寧にまとめられているので，それを見ながらインストールすると良い。以下補足。</p>
-<ul>
-<li>プログラミング用フォントのインストールはとりあえず飛ばしてもかまわない。</li>
-<li>RtoolsもとりあえずなくてもOk(パッケージをソースコードからビルドする場合に必要だが，ほとんどのパッケージはビルド済みのバイナリが提供されている)。</li>
-<li>全角文字(とくに全角スペース)が含まれるホーム・フォルダ名の問題は，Rに限らずさまざまなソフトで問題を引き起こすので，対処しておく必要がある。
-<ul>
-<li>最近ではMicrosoftアカウントでWindowsをセットアップすると，Microsoftアカウント(メールアドレス)の最初の5文字がホーム・フォルダ名になるはずなので，通常は問題ないはず。</li>
-<li>ホームフォルダ名に漢字などの全角文字が使われている場合は，いっそのことOSを初期化してMicrosoftアカウントを使って再セットアップした方がいいかもしれない(ユーザー名だけを変更しても，ホームフォルダ名は変わらない)。</li>
-<li>初期化したくない場合には，矢内先生の資料の対処法その3(シンボリックリンク作成)が良いと思う。</li>
-</ul></li>
-<li>One Drive問題にも対処が必要。
-<ul>
-<li>Rはパッケージをドキュメント・フォルダにインストールする。ドキュメント・フォルダがOneDriveに管理されていると，フォルダ名に全角文字(カタカナで”ドキュメント”)が含まれるためパッケージを読み込むことができなくなる。</li>
-<li>Office 365のOneDriveを使っている場合には，矢内先生の資料の対処法その3で，パッケージをインストールするフォルダとして別の場所を指定するのが良い。</li>
-</ul></li>
-</ul>
+<div id="dockerイメージを使う" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Dockerイメージを使う<a href="rとrstudioのインストール.html#dockerイメージを使う" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dockerを使うと，RStudio Serverがセットアップされたコンテナを簡単に使うことができる。Docker Desktopをインストールしておけば，以下のコマンドだけでRStudio Serverが起動する。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="rとrstudioのインストール.html#cb3-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-e</span> PASSWORD=yourpassword <span class="at">-p</span> 8787:8787 rocker/rstudio</span></code></pre></div>
+<p>コマンドを実行したら，ブラウザで<code>localhost:8787</code>にアクセスすればRStudio Serverにアクセスできる。ユーザー名は<code>rstudio</code>，パスワードは<code>yourpassword</code>。ただし，これはあくまでお試し用。実際に使うにはもう少し設定が必要。</p>
+<p>LatexなどもまとめてDockerコンテナ化したものを作ったので，<a href="https://github.com/tomokazu518/research_env">こちら</a>を参考にしてほしい。</p>
 </div>
-<div id="wsl-windows-subsystem-for-linux" class="section level3 hasAnchor" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> WSL (Windows Subsystem for Linux)<a href="rとrstudioのインストール.html#wsl-windows-subsystem-for-linux" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="wslとは" class="section level4 hasAnchor" number="2.2.3.1">
-<h4><span class="header-section-number">2.2.3.1</span> WSLとは<a href="rとrstudioのインストール.html#wslとは" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Linuxには便利なツール(コマンド)があって，その多くはWindowsでも使えるが，実行速度や安定性ではLinuxに軍配が上がる。RもWindowsよりもLinuxの方が速いらしい。</p>
-<p>WSLはWindows上で動作するLinuxの仮想環境。Windowsマシン上でもう1台LinuxのPCを動かすようなイメージ。メインマシンをLinuxにしようってほど尖ってはいないが，Linuxのツールを使いたいという場合に便利。</p>
-</div>
-<div id="wsl2のインストール" class="section level4 hasAnchor" number="2.2.3.2">
-<h4><span class="header-section-number">2.2.3.2</span> WSL2のインストール<a href="rとrstudioのインストール.html#wsl2のインストール" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="wslにインストールして使う" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> WSLにインストールして使う<a href="rとrstudioのインストール.html#wslにインストールして使う" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>いまではDockerを使うのが一般的なので，あまりおすすめしないが，以前に書いた解説]があるので一応リンクだけ張っておく。</p>
 <ul>
-<li>BIOSで仮想化支援機能を有効にする
-<ul>
-<li>有効になっているかどうかは<a href="https://openlibsys.org/index-ja.html">VirtualChecker</a>で確認できる(最初から有効になっている場合もある)</li>
-<li>BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目</li>
-</ul></li>
-<li>Windows 10 バージョン 2004 以降では，PowerShellで以下のように入力すればインストールできる(仮想化支援機能の有効化は必要)。デフォルトでUbuntuもインストールされるので，これだけですぐに使えるようになる。</li>
+<li><a href="https://tomokazu518.github.io/public/PC/wsl/">WSL導入メモ</a></li>
+<li><a href="https://tomokazu518.github.io/public/PC/rstudio-server/">WSLでRStudio Server</a></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb3-1"><a href="rとrstudioのインストール.html#cb3-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="op">--</span>install</span></code></pre></div>
-</div>
-<div id="初期設定" class="section level4 hasAnchor" number="2.2.3.3">
-<h4><span class="header-section-number">2.2.3.3</span> 初期設定<a href="rとrstudioのインストール.html#初期設定" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>スタートメニューなどにUbuntuのショートカットが追加されているので起動する。初回起動時は，設定が行われるため数分かかる。 起動すると新規ユーザー名とパスワードを聞かれるので適当に設定すれば良い(パスワードは入力しても表示されないので注意)。パスワードはWindowsよりも頻繁に入力を求められるので入力しやすいものにしておいた方が良い。</p>
-<ul>
-<li>起動したら，まず以下のコマンドでパッケージのアップデートを行っておく。</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="rとrstudioのインストール.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb4-2"><a href="rとrstudioのインストール.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt upgrade <span class="at">-y</span></span></code></pre></div>
-<ul>
-<li>WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに”¥¥wsl$“と入力</li>
-<li>WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを使うには，wslコマンド，もしくはubuntu runコマンドを使う</li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="rとrstudioのインストール.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> ls <span class="at">-l</span></span>
-<span id="cb5-2"><a href="rとrstudioのインストール.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ubuntu</span> run ls <span class="at">-l</span></span></code></pre></div>
-</div>
-<div id="rstudio-serverとは" class="section level4 hasAnchor" number="2.2.3.4">
-<h4><span class="header-section-number">2.2.3.4</span> RStudio Serverとは<a href="rとrstudioのインストール.html#rstudio-serverとは" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>WSL上のLinuxにRStudioをインストールすれば普通にLinuxデスクトップ版RStudioを使うことができるようになるが，ここではRStudio Serverを使う方法を説明する。RStudio Serverは，RStudioをブラウザで使うことができる自前のRStudio Cloud。インターフェイスや操作性はデスクトップ版RStudioとほぼ変わらない。</p>
-<p>RStudio Serverのメリットは，インストールしたマシン以外からもブラウザで簡単にアクセスして使える点。サーバー1台にインストールしておけば，どのマシンからアクセスしても同じRの環境で分析ができるし，中断した作業を別のマシンでシームレスに再開することも可能。一応，iPadやスマホでも使うことができる。</p>
-</div>
-<div id="r本体およびrstudio-serverのインストール" class="section level4 hasAnchor" number="2.2.3.5">
-<h4><span class="header-section-number">2.2.3.5</span> R本体およびRStudio Serverのインストール<a href="rとrstudioのインストール.html#r本体およびrstudio-serverのインストール" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>基本的には，<a href="https://support.rstudio.com/hc/en-us/articles/360049776974-Using-RStudio-Server-in-Windows-WSL2">ここ</a>で解説されている通りにやればできる。</p>
-<ul>
-<li>まず，証明書とレポジトリを追加</li>
-</ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="rとrstudioのインストール.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-key adv <span class="at">--keyserver</span> hkp://keyserver.ubuntu.com:80 <span class="at">--recv-keys</span> E298A3A825C0D65DFD57CBB651716619E084DAB9</span>
-<span id="cb6-2"><a href="rとrstudioのインストール.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">&#39;deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/&#39;</span></span></code></pre></div>
-<ul>
-<li>RおよびRStudio Serverを使うために必要なパッケージをインストール</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="rとrstudioのインストール.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">-y</span> r-base r-base-core r-recommended r-base-dev gdebi-core build-essential libcurl4-gnutls-dev libxml2-dev libssl-dev</span></code></pre></div>
-<ul>
-<li>Ubuntu用のRStudio Serverをダウンロード</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="rとrstudioのインストール.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://rstudio.org/download/latest/stable/server/bionic/rstudio-server-latest-amd64.deb</span></code></pre></div>
-<ul>
-<li>RStudio Serverのインストール(“Couldn’t find an alternative telinit implementation to spawn.”というメッセージが出るが，無視してよいとのこと)</li>
-</ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="rとrstudioのインストール.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> gdebi rstudio-server-latest-amd64.deb</span></code></pre></div>
-<ul>
-<li>RStudio Serverを起動</li>
-</ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="rとrstudioのインストール.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rstudio-server start</span></code></pre></div>
-<ul>
-<li><a href="http://localhost:8787">http://localhost:8787</a>にアクセスしてRStudio Serverが動いていることを確認</li>
-<li>ユーザー名とパスワードは，Ubuntuに設定したもの</li>
-<li>LAN内のほかのPCやインターネット経由でもアクセスできるようにすれば便利(ただし，このまま外部からアクセスできるようにするのは危険)</li>
-</ul>
-</div>
 </div>
 </div>
 <div id="rstudioの画面" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> RStudioの画面<a href="rとrstudioのインストール.html#rstudioの画面" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>RStudioを起動すると，細かい違いはあれ下のような画面が表示されるはず。</p>
-<div class="figure">
-<img src="RStudio.png" alt="" />
-<p class="caption">RStudio</p>
+<div class="float">
+<img src="RStudio.png" alt="RStudio" />
+<div class="figcaption">RStudio</div>
 </div>
 <p>デフォルトでは白背景の配色になっていると思うが，コードを書くときは黒や青背景の方が見やすいので変更している。見た目を変更するには，RStudioのメニューから[Tools]&gt;[Global Options…]を選び，Appearanceで設定する。長時間の作業を行う場合には，色やフォントによって作業効率や目の疲れ方がけっこう変わってくるので，いろいろ試して自分にあった設定にしよう。</p>
 <p>RStudioの画面は，デフォルトで4ペイン(4分割)。最初はそのまま使っても良いと思うが，画面のレイアウトは比較的自由に変えることができるので，慣れてきたら自分が使いやすいように設定しよう。</p>
@@ -343,7 +279,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.4</span> ヘルプの参照<a href="rとrstudioのインストール.html#ヘルプの参照" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rのコマンド・ヘルプは?のあとにコマンド名を入力すれば参照できる。ヘルプは，Helpタブ(デフォルトでは右下のペイン)に表示される。知らないコマンドが出てきたらまずはヘルプを読む。英語が苦手でもDeepLで翻訳すればだいたい読める。</p>
 <p>たとえば，table関数のヘルプを読みたければ，</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="rとrstudioのインストール.html#cb11-1" aria-hidden="true" tabindex="-1"></a>?table</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="rとrstudioのインストール.html#cb4-1" tabindex="-1"></a>?table</span></code></pre></div>
 </div>
 <div id="チュートリアルの実行" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> チュートリアルの実行<a href="rとrstudioのインストール.html#チュートリアルの実行" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -352,15 +288,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="パッケージのインストール" class="section level2 hasAnchor" number="2.6">
 <h2><span class="header-section-number">2.6</span> パッケージのインストール<a href="rとrstudioのインストール.html#パッケージのインストール" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rは本体にパッケージを追加することで，機能を拡張することができる。パッケージをインストールするには，install.packages関数を用いる。とくに，tidyverseパッケージは必ず利用することになるので，インストールしておこう。</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="rとrstudioのインストール.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="rとrstudioのインストール.html#cb5-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <p>MacやUbuntuの場合，もしかしたら”openssl”がないみたいなエラーが出るかもしれない。そのときは，opensslをインストールしてから，再度実行する。</p>
 <p>opensslはMac(Homebrew)だと，</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="rとrstudioのインストール.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install openssl</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="rとrstudioのインストール.html#cb6-1" tabindex="-1"></a><span class="ex">brew</span> install openssl</span></code></pre></div>
 <p>Ubuntuだと，</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="rとrstudioのインストール.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install openssl</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="rとrstudioのインストール.html#cb7-1" tabindex="-1"></a><span class="fu">sudo</span> apt install openssl</span></code></pre></div>
 <p>でインストールできる。</p>
 <p>インストールしたパッケージは毎回読み込む必要がある。パッケージを読み込むにはlibrary関数を使う。</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="rとrstudioのインストール.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="rとrstudioのインストール.html#cb8-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 
 </div>
 </div>
@@ -421,20 +357,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

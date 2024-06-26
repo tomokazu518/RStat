@@ -10,118 +10,53 @@ Dockerを利用しないのであれば，OSはMacかLinuxがおすすめ。Wind
 
 まとめると，おすすめ順に
 
-1. DockerでRStudio Serverを使う(どのOSでも同じ環境を構築可能)
-1. Mac(もしくはLinux)にインストールして使う
-1. WindowsのWSL上にRStudio Serverをインストールして使う
-1. Windowsにインストールして使う
+1.  DockerでRStudio Serverを使う(どのOSでも同じ環境を構築可能)
+2.  Mac(もしくはLinux)にインストールして使う
+3.  WindowsのWSL上にRStudio Serverをインストールして使う
+4.  Windowsにインストールして使う
 
 ## インストール方法
 
-### 方法1. DockerのRstudio Serverを使う
+インストールの方法については[高知工科大学の矢内先生のホームページ](https://yukiyanai.github.io/jp/resources/)に，これ以上丁寧に説明することはできないというくらいに丁寧な解説スライドが公開されている。Ubuntu，Mac，Windows版があるので，これらを参考にインストールすると良い。ただし，うまくいかなくても矢内先生に直接質問のメールを送ったりはしないこと。以下は，補足。
 
-### 方法2. Macにインストールして使う
+### MacにHomebrewを使ってインストールする
 
 Homebrewを使うとRとRStudioをまとめて簡単にインストールできる。
 
-- HomebrewはMacのパッケージマネージャ。ソフトのインストールやアップグレードの管理が容易にできるようになる。
-    - RとRStudioもHomebrewを使えば簡単にインストールできる。
-    - Homebrewをインストールしていない人は，ターミナルで以下のコマンドを実行すればインストール可能(詳細は，[ここ](https://brew.sh/index_ja)を参照)。
+-   HomebrewはMacのパッケージマネージャ。ソフトのインストールやアップグレードの管理が容易にできるようになる。
 
-        ```{bash eval=F}
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        ```
+    -   RとRStudioもHomebrewを使えば簡単にインストールできる。
+    -   Homebrewをインストールしていない人は，ターミナルで以下のコマンドを実行すればインストール可能(詳細は，[ここ](https://brew.sh/ja/)を参照)。
 
-- Homebrewがインストールできたら，ターミナルで以下のコマンドを実行することでRとRStudio，ついでにXquartzをインストールできる。
+    ```{bash eval=F}
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+-   Homebrewがインストールできたら，ターミナルで以下のコマンドを実行することでRとRStudio，ついでにXquartzをインストールできる。
 
     ```{bash eval=F}
     brew install --cask r rstudio xquartz
     ```
 
-### 方法3. WSL (Windows Subsystem for Linux)にRstudio Serverをインストールする
+### Dockerイメージを使う
 
-#### WSLとは
-
-Linuxには便利なアプリケーションが多数ある。だいたいのものはWindowsにも移植されているが，実行速度や安定性の面ではLinuxと同じというわけにはいかないことも多い。RもWindows版は実行速度が遅いらしい。
-
-WSLはWindows上で動作するLinuxの仮想環境。WindowsのPC上でもう1台LinuxのPCを動かすようなイメージ。メインPCをLinuxにするほどではないが，Linuxのアプリケーションを使いたいという場合に便利。
-
-#### WSL2のインストール
-
-- 仮想化支援機能を有効にする
-  - 最初から有効になっていることが多い
-  - もし有効になっていなければ，BIOSで設定。BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目
-- Windows 10 バージョン 2004 以降では，PowerShellで以下のように入力すればインストールできる(仮想化支援機能の有効化は必要)。デフォルトでUbuntuもインストールされるので，これだけですぐに使えるようになる。
-
-``` powershell
-wsl --install
-```
-
-#### 初期設定
-
-スタートメニューなどにUbuntuのショートカットが追加されているので起動する。初回起動時は，設定が行われるため数分かかる。
-
-起動すると新規ユーザー名とパスワードを聞かれるので適当に設定すれば良い(パスワードは入力しても表示されないので注意)。パスワードはWindowsよりも頻繁に入力を求められるので入力しやすいものにしておいた方が良い。
-
-- 起動したら，まず以下のコマンドでパッケージのアップデートを行っておく。
+Dockerを使うと，RStudio Serverがセットアップされたコンテナを簡単に使うことができる。Docker Desktopをインストールしておけば，以下のコマンドだけでRStudio Serverが起動する。
 
 ``` bash
-sudo apt update
-sudo apt upgrade -y
+docker run --rm -ti -e PASSWORD=yourpassword -p 8787:8787 rocker/rstudio
 ```
 
-- WindowsからLinux上のファイルへアクセスするには，エクスプローラーのアドレスバーに"¥¥wsl\$"と入力
-- WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを使うには，wslコマンド，もしくはubuntu runコマンドを使う
+コマンドを実行したら，ブラウザで`localhost:8787`にアクセスすればRStudio Serverにアクセスできる。ユーザー名は`rstudio`，パスワードは`yourpassword`。ただし，これはあくまでお試し用。実際に使うにはもう少し設定が必要。
 
-``` bash
-wsl ls -l
-ubuntu run ls -l
-```
+LatexなどもまとめてDockerコンテナ化したものを作ったので，[こちら](https://github.com/tomokazu518/research_env)を参考にしてほしい。
 
-#### RStudio Serverとは
+### WSLにインストールして使う
 
-WSL上のLinuxにRStudioをインストールすれば普通にLinuxデスクトップ版RStudioを使うことができるようになるが，ここではRStudio Serverを使う方法を説明する。RStudio Serverは，RStudioをブラウザで使うことができる自前のRStudio Cloud。インターフェイスや操作性はデスクトップ版RStudioとほぼ変わらない。
+いまではDockerを使うのが一般的なので，あまりおすすめしないが，以前に書いた解説]があるので一応リンクだけ張っておく。
 
-RStudio Serverのメリットは，インストールしたマシン以外からもブラウザで簡単にアクセスして使える点。サーバー1台にインストールしておけば，どのマシンからアクセスしても同じRの環境で分析ができるし，中断した作業を別のマシンでシームレスに再開することも可能。一応，iPadやスマホでも使うことができる。
+- [WSL導入メモ](https://tomokazu518.github.io/public/PC/wsl/)
+- [WSLでRStudio Server](https://tomokazu518.github.io/public/PC/rstudio-server/)
 
-#### R本体およびRStudio Serverのインストール
-
-基本的には，[ここ](https://support.rstudio.com/hc/en-us/articles/360049776974-Using-RStudio-Server-in-Windows-WSL2)で解説されている通りにやればできる。
-
--   まず，証明書とレポジトリを追加
-
-``` bash
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
-```
-
--   RおよびRStudio Serverを使うために必要なパッケージをインストール
-
-``` bash
-sudo apt install -y r-base r-base-core r-recommended r-base-dev gdebi-core build-essential libcurl4-gnutls-dev libxml2-dev libssl-dev
-```
-
--   Ubuntu用のRStudio Serverをダウンロード
-
-``` bash
-wget https://rstudio.org/download/latest/stable/server/bionic/rstudio-server-latest-amd64.deb
-```
-
--   RStudio Serverのインストール("Couldn’t find an alternative telinit implementation to spawn."というメッセージが出るが，無視してよいとのこと)
-
-``` bash
-sudo gdebi rstudio-server-latest-amd64.deb
-```
-
--   RStudio Serverを起動
-
-``` bash
-sudo rstudio-server start
-```
-
--   <http://localhost:8787>にアクセスしてRStudio Serverが動いていることを確認
--   ユーザー名とパスワードは，Ubuntuに設定したもの
--   LAN内のほかのPCやインターネット経由でもアクセスできるようにすれば便利(ただし，このまま外部からアクセスできるようにするのは危険)
- 
 ## RStudioの画面
 
 RStudioを起動すると，細かい違いはあれ下のような画面が表示されるはず。

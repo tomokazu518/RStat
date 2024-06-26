@@ -38,3 +38,10 @@ xtabsを使う
 単回帰分析
 重回帰分析
 ダミー変数
+url-your-book-url-like-httpsbookdown.orgyihuibookdown
+方法1.-dockerのrstudio-serverを使う
+方法2.-macにインストールして使う
+方法3.-wsl-windows-subsystem-for-linuxにrstudio-serverをインストールする
+macにhomebrewを使ってインストールする
+dockerイメージを使う
+wslにインストールして使う
