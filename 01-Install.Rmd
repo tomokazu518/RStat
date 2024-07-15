@@ -52,7 +52,7 @@ LatexなどもまとめてDockerコンテナ化したものを作ったので，
 
 ### WSLにインストールして使う
 
-いまではDockerを使うのが一般的なので，あまりおすすめしないが，以前に書いた解説]があるので一応リンクだけ張っておく。
+いまではDockerを使うのが一般的なので，あまりおすすめしないが，以前に書いた解説があるので一応リンクだけ張っておく。
 
 - [WSL導入メモ](https://tomokazu518.github.io/public/PC/wsl/)
 - [WSLでRStudio Server](https://tomokazu518.github.io/public/PC/rstudio-server/)
